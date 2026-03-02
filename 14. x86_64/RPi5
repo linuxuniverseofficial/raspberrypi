@@ -1,0 +1,34 @@
+ARM64 AND X64 ONLY!!!
+Do not support armhf or x32.
+Raspberry Pi OS only!
+
+sudo dpkg --add-architecture armhf; sudo apt update; sudo apt upgrade -y
+sudo apt install gcc-arm-linux-gnueabihf git build-essential cmake libgtk2.0-0:armhf libsdl2-image-2.0-0:armhf libsdl1.2debian:armhf libopenal1:armhf libvorbisfile3:armhf libgl1:armhf libjpeg62:armhf libcurl4:armhf libasound2-plugins:armhf -y
+
+git clone https://github.com/ptitSeb/box64
+cd box64; mkdir build; cd build; cmake .. -DRPI4ARM64=1 -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_INSTALL_PREFIX:PATH=/opt/box64
+make -j$(nproc)
+sudo make install
+sudo systemctl restart systemd-binfmt
+
+https://github.com/Kron4ek/Wine-Builds/releases/  (...)
+sudo mkdir /opt/wine
+sudo tar -zxf PlayOnLinux-wine-6.17-upstream-linux-amd64.tar.gz -C /opt/wine
+
+sudo curl -fsSL https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks -o /usr/local/bin/winetricks
+sudo chmod +x /usr/local/bin/winetricks
+sudo winetricks --self-update
+
+sudo ln -s /opt/wine/bin/wine /usr/local/bin/wine
+sudo ln -s /opt/wine/bin/wine64 /usr/local/bin/wine64
+sudo ln -s /opt/wine/bin/wineserver /usr/local/bin/wineserver
+sudo ln -s /opt/wine/bin/winecfg /usr/local/bin/winecfg
+sudo ln -s /opt/wine/bin/wineboot /usr/local/bin/wineboot
+sudo chmod +x /usr/local/bin/wine /usr/local/bin/wineboot /usr/local/bin/winecfg /usr/local/bin/wineserver
+
+export BOX86_PATH=/opt/wine86/bin/
+export BOX86_LD_LIBRARY_PATH=/opt/wine86/lib/wine/i386-unix/:/lib/i386-linux-gnu:/lib/aarch64-linux-gnu/
+export BOX64_PATH=/opt/wine64/bin/
+export BOX64_LD_LIBRARY_PATH=/opt/wine64/lib/i386-unix/:/opt/wine64/lib/wine/x86_64-unix/:/lib/i386-linux-gnu/:/lib/x86_64-linux-gnu:/lib/aarch64-linux-gnu/
+
+
