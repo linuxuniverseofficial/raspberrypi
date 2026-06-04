@@ -1,3 +1,12 @@
+
+DEPRECATED AS HELL
+INSTALL RASPBIAN TRIXIE - LATEST
+AND
+https://github.com/raspberrypi/rpi-usb-gadget/releases
+
+If needed, old code is
+
+
 # Turn SSH on without monitor attached:
 (DEPRECATED - EDIT SETTINGS WITH RPI-IMAGER INSTEAD!)
 NAO TEIMA, REGRAVA, COM CONFIG DIRETO DO PI-IMAGER, PORQUE NAO CONECTA.
