@@ -1,0 +1,10 @@
+
+Iniciar o sistema.
+Definir senha.
+sudo netplan apply
+
+sudo apt purge apparmor snapd needrestart cloud-init unattended-upgrades
+
+sudo nano /etc/ssh/sshd_config.d/50-cloud-init.conf
+Remover a linha. OU o arquivo.
+sudo systemctl restart sshd
