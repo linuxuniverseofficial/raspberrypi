@@ -1,14 +1,18 @@
 network:
-  version: 2
+  renderer: NetworkManager
   ethernets:
     eth0:
       dhcp4: true
       optional: true
   wifis:
-    renderer: NetworkManager
-    wlan0:
-      dhcp4: true
+    wlxf0a73129a73f:
+      dhcp4: false
+      dhcp6: false
       optional: true
+      addresses:
+        - 192.168.4.1/24
       access-points:
-        "Your-WiFi-Network-Name":
-          password: "******"
+        "meu wifi aqui":
+          password: "senha"
+          mode: ap
+  version: 2
